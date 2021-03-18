@@ -1,44 +1,51 @@
 package ru.geekbrains.java3_work1_Generic;
 
+import ru.geekbrains.java3_work1_Generic.Task3.Apple;
+import ru.geekbrains.java3_work1_Generic.Task3.Box;
+import ru.geekbrains.java3_work1_Generic.Task3.Orange;
+
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class Main {
 
     public static void main(String[] args)
     {
-        ArrayList<String> arr = new ArrayList<String>();
-        arr.add("a");
-        arr.add("b");
-        arr.add("c");
-        arr.add("d");
-        System.out.println(arr);
+        System.out.println("Task1");
+        new Task1();
+        new Task2();
 
-        new AnyArray<ArrayList>().swapArrayElements(1, 2, arr);
-        System.out.println(arr);
-    }
+        //TAsk3
+        System.out.println("Task3");
+        Orange orange = new Orange();
+        Apple apple = new Apple();
 
-//    public static <T> void swapArrayElements(int e1, int e2, <T>ArrObj)
-//    {
-//        T element1 = ArrObj.get(e1);
-//        T element2 = ArrObj.get(e2);
-//
-//        ArrObj.set(e1, element2);
-//        ArrObj.set(e2, element1);
-//
-//    }
+        Box<Orange> boxO = new Box<Orange>();
+        boxO.addFruit(orange);
+        boxO.addFruit(orange);
+        boxO.addFruit(orange);
+        boxO.addFruit(orange);
 
-    public static class AnyArray<T extends List> {
+        Box<Orange> boxO2 = new Box<Orange>();
+        boxO2.addFruit(orange);
+        boxO2.addFruit(orange);
 
-        public void swapArrayElements(int e1, int e2, T receivedArray)
-        {
-            Object element1 = receivedArray.get(e1);
-            Object element2 = receivedArray.get(e2);
+        Box<Apple> boxA = new Box<Apple>();
+        boxA.addFruit(apple);
+        boxA.addFruit(apple);
+        boxA.addFruit(apple);
+        boxA.addFruit(apple);
+        boxA.addFruit(apple);
 
-            receivedArray.set(e1, element2);
-            receivedArray.set(e2, element1);
-        }
+        System.out.println("Короб с апельсинами равен по весу коробку с яблоками: " + boxO.compare(boxA));
+        System.out.println("Вес короба 1 с апельсинами: " + boxO.getWeightBox());
+        System.out.println("Вес короба 2 с апельсинами: " + boxO2.getWeightBox());
+        System.out.println("Вес короба с яблоками: " + boxA.getWeightBox());
+
+        boxO2.dragOutTo(boxO);
+        System.out.println("Вес короба 1 с апельсинами: " + boxO.getWeightBox());
+        System.out.println("Вес короба 2 с апельсинами: " + boxO2.getWeightBox());
     }
 }
-
 
